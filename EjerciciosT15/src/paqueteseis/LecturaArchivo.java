@@ -16,14 +16,16 @@ import java.util.Scanner;
  * @author reroes
  */
 public class LecturaArchivo {
-   
+
     // lee registro del archivo
     public static double leerRegistros() {
-        
+
         double suma = 0;
         double promedio;
         double sueldo;
-        
+        int edad;
+        int contador = 0;
+
         // 1. Se abre el archivo
         try // lee registros del archivo, usando el objeto Scanner
         {
@@ -33,24 +35,27 @@ public class LecturaArchivo {
                 String linea = entrada.nextLine();
                 List<String> lista = Arrays.asList(linea.split("\\|"));
                 ArrayList<String> linea_partes = new ArrayList<>(lista);
-                
+
                 // agregar código aquí
                 sueldo = Double.parseDouble(linea_partes.get(2));
-                suma = suma + sueldo;
-                
+                edad = Integer.parseInt(linea_partes.get(1));
+                if (edad >= 30 && edad <= 35) {
+                    contador = contador + 1;
+                    suma = suma + sueldo;
+                }
+                //posicion1 = edad
+
             } // fin de while
             entrada.close();
         } // fin de try
         catch (Exception e) {
             System.err.printf("Error, revise: %s\n", e);
-            System.exit(1); 
+            System.exit(1);
         } // fin de catch
-        
-        
-        return suma;
-        
+        promedio = suma / contador;
+        return promedio;
+
     } // fin del m�todo leerRegistros
     // cierra el archivo y termina la aplicaci�n
 
-    
-} 
+}

@@ -40,8 +40,14 @@ public class LecturaArchivo {
                 numeroEstablecimientosEntero = Integer.parseInt(numeroEstablecimientos);
                 
                 // agregar código aquí
+                char letra = nombreCanton.charAt(0);
                 
-                
+                if (letra == 'A' || letra =='E'|| letra =='I'|| letra =='O'||
+                        letra =='U') {
+                    cadenaFinal= String.format("%s%s  (%d)\n",cadenaFinal,
+                            nombreCanton,
+                            numeroEstablecimientosEntero);
+                }
             } // fin de while
             entrada.close();
         } // fin de try
